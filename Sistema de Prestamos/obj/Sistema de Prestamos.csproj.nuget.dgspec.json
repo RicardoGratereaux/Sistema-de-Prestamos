@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\ricki\\Source\\Repos\\Sistema-de-Prestamos\\Sistema de Prestamos\\Sistema de Prestamos.csproj": {}
+    "C:\\Users\\OWNER\\source\\repos\\Sistema-de-Prestamos\\Sistema de Prestamos\\Sistema de Prestamos.csproj": {}
   },
   "projects": {
-    "C:\\Users\\ricki\\Source\\Repos\\Sistema-de-Prestamos\\Sistema de Prestamos\\Sistema de Prestamos.csproj": {
+    "C:\\Users\\OWNER\\source\\repos\\Sistema-de-Prestamos\\Sistema de Prestamos\\Sistema de Prestamos.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\ricki\\Source\\Repos\\Sistema-de-Prestamos\\Sistema de Prestamos\\Sistema de Prestamos.csproj",
+        "projectUniqueName": "C:\\Users\\OWNER\\source\\repos\\Sistema-de-Prestamos\\Sistema de Prestamos\\Sistema de Prestamos.csproj",
         "projectName": "Sistema de Prestamos",
-        "projectPath": "C:\\Users\\ricki\\Source\\Repos\\Sistema-de-Prestamos\\Sistema de Prestamos\\Sistema de Prestamos.csproj",
-        "packagesPath": "C:\\Users\\ricki\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\ricki\\Source\\Repos\\Sistema-de-Prestamos\\Sistema de Prestamos\\obj\\",
+        "projectPath": "C:\\Users\\OWNER\\source\\repos\\Sistema-de-Prestamos\\Sistema de Prestamos\\Sistema de Prestamos.csproj",
+        "packagesPath": "C:\\Users\\OWNER\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\OWNER\\source\\repos\\Sistema-de-Prestamos\\Sistema de Prestamos\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\ricki\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\OWNER\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
