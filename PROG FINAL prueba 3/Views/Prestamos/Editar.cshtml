@@ -1,0 +1,85 @@
+﻿@{
+    ViewData["Title"] = "Editar";
+}
+@model PROG_FINAL_prueba_3.Models.Prestamo
+
+@{
+    ViewData["Title"] = "Editar Préstamo";
+}
+
+<h1>Editar Préstamo</h1>
+<form id="formularioEditar">
+    <input type="hidden" id="idEditar" name="idEditar" value="@Model.Id" /> <!-- Campo oculto para almacenar el ID del préstamo -->
+    <div class="form-group">
+        <label for="nombreEditar">Nombre:</label>
+        <input type="text" class="form-control" id="nombreEditar" name="nombreEditar" value="@Model.Nombre" />
+    </div>
+    <div class="form-group">
+        <label for="montoEditar">Monto:</label>
+        <input type="text" class="form-control" id="montoEditar" name="montoEditar" value="@Model.Monto" />
+    </div>
+    <div class="form-group">
+        <label for="plazoEditar">Plazo:</label>
+        <input type="text" class="form-control" id="plazoEditar" name="plazoEditar" value="@Model.Plazo" />
+    </div>
+    <div class="form-group">
+        <label for="tasaEditar">Cuotas pendientes:</label>
+        <input type="text" class="form-control" id="cuotaspendientesEditar" name="cuotaspendientesEditar" value="@Model.cuotaspendientes" />
+    </div>
+    <div class="form-group">
+        <label for="tasaEditar">Tasa de Interés:</label>
+        <input type="text" class="form-control" id="tasaEditar" name="tasaEditar" value="@Model.TasaInteres" />
+    </div>
+    <BR>
+    <button type="button" class="btn btn-primary" onclick="guardarEdicion()">Guardar</button>
+    <a href="/Prestamos/Registrar" class="btn btn-secondary">Cancelar</a>
+</form>
+ 
+       
+
+<script>
+    function guardarEdicion() {
+        // Obtener los valores del formulario
+        var id = $("#idEditar").val();
+        var nombre = $("#nombreEditar").val();
+        var monto = $("#montoEditar").val();
+        var plazo = $("#plazoEditar").val();
+        var plazo = $("#cuotaspendientesEditar").val();
+        var tasa = parseFloat($("#tasaEditar").val().replaceAll(",", ".")); 
+        $(this).closest("tr").find(".tasaInteres").text(tasa.toString());
+        // Realizar la lógica para guardar los cambios
+        // Puedes utilizar una llamada AJAX para enviar los datos al servidor y actualizar el préstamo en tu controlador o servicio
+
+        // Ejemplo de llamada AJAX utilizando jQuery
+        $.ajax({
+            url: "/Prestamos/Registrar", // Ruta de la acción de guardar edición en tu controlador
+            type: "POST",
+            data: { id: id, nombre: nombre, monto: monto, plazo: plazo, tasa: tasa },
+            success: function (response) {
+                // Manejar la respuesta del servidor, si es necesario
+                // Por ejemplo, puedes mostrar un mensaje de éxito o redirigir al usuario a otra página
+                console.log("Edición guardada con éxito.");
+                window.location.href = "/Prestamos/Registrar"; // Redirigir a la página principal de préstamos
+
+                // Borra el registro anterior automáticamente
+                $.ajax({
+                    url: "/Prestamos/Eliminar", // Ruta de la acción de borrar en tu controlador
+                    type: "POST",
+                    data: { id: id }, // Envía el ID del registro editado para borrarlo
+                    success: function (response) {
+                        console.log("Registro borrado con éxito."); // Mensaje de éxito en la consola
+                    },
+                    error: function (error) {
+                        console.log("Error al borrar el registro: " + error); // Manejo de errores, si es necesario
+                    }
+                });
+            },
+            error: function (error) {
+                console.log("Error al guardar la edición: " + error);
+            }
+        });
+    }
+</script>
+
+
+

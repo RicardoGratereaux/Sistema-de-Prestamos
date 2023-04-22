@@ -1,0 +1,36 @@
+﻿@model PROG_FINAL_prueba_3.Models.Prestamo
+
+<h2>Eliminar Préstamo</h2>
+
+<p>¿Estás seguro que deseas eliminar el siguiente préstamo?</p>
+
+<table class="table">
+    <tr>
+        <th>Id</th>
+        <th>Nombre</th>
+        <th>Monto</th>
+        <th>Plazo</th>
+        <th>Tasa de Interés</th>
+        <th>Editar</th>
+        <th>Eliminar</th>
+
+        <!-- Agrega aquí las demás columnas de tu modelo Prestamo -->
+    </tr>
+    <tr>
+        <td>@Model.Id</td>
+        <td>@Model.Nombre</td>
+        <td>@Model.Monto</td>
+        <td>@Model.Plazo</td>
+        <td>@Model.TasaInteres</td>
+       
+    </tr>
+</table>
+
+@using (Html.BeginForm("EliminarConfirmado", "Prestamos", new { id = Model.Id }, FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <input type="submit" value="Eliminar" class="btn btn-danger" />
+    @Html.ActionLink("Cancelar", "Registrar", null, new { @class = "btn btn-secondary" })
+}
+
+

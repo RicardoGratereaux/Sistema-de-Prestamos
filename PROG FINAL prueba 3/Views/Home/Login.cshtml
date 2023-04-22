@@ -1,0 +1,19 @@
+﻿@{
+    ViewData["Title"] = "Login";
+}
+
+@*@model PROG_FINAL_prueba_3.Models.Usuario*@
+
+<h2>Iniciar sesión</h2>
+
+<form method="post" action="/Home/erfil">
+    <div class="form-group">
+        <label for="correo">Correo electrónico</label>
+        <input type="email" class="form-control" id="correo" name="correo" placeholder="Ingresa tu correo electrónico" required>
+    </div>
+    <div class="form-group">
+        <label for="contraseña">Contraseña</label>
+        <input type="password" class="form-control" id="contraseña" name="contraseña" placeholder="Ingresa tu contraseña" required>
+    </div>
+    <button href="/Home/Perfil" type="submit" class="btn btn-primary">Iniciar sesión</button>
+</form>

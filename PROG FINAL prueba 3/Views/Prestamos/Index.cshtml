@@ -1,0 +1,33 @@
+﻿@{
+    ViewData["Title"] = "Lista de Préstamos";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<h2>Registrar nuevo préstamo</h2>
+<form method="post" action="/Prestamos/Registrar">
+    <div class="form-group">
+        <label for="nombre">Nombre:</label>
+        <input type="text" class="form-control" id="nombre" name="Nombre" required>
+    </div>
+    <div class="form-group">
+        <label for="monto">Monto:</label>
+        <input type="number" class="form-control" id="monto" name="Monto" required>
+    </div>
+    <div class="form-group">
+        <label for="plazo">Plazo:</label>
+        <input type="number" class="form-control" id="plazo" name="Plazo" required>
+    </div>
+    <div class="form-group">
+        <label for="tasaInteres">Tasa de Interés:</label>
+        <input type="number" class="form-control" id="tasaInteres" name="TasaInteres" required>
+    </div>
+    <div class="form-group">
+        <label for="tasaInteres">Cuotas:</label>
+        <input type="number" class="form-control" id="cuotaspendientes" name="cuotaspendientes" required>
+    </div>
+    <br>
+    <button type="submit" class="btn btn-primary">Registrar</button>
+
+    <a href="/Prestamos/Registrar" class="btn btn-secondary">Ver Tabla de Préstamos</a>
+</form>

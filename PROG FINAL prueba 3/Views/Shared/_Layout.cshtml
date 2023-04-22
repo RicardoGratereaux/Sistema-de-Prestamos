@@ -1,0 +1,57 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - Sistema De Prestamos</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@latest/css/boxicons.min.css" />
+    <link rel="stylesheet" href="~/css/styles.css" />
+</head>
+<body id="body-pd">
+    <header class="header" id="header">
+        <div class="header_toggle" style="color: #181c4e"> <i class='bx bx-menu' id="header-toggle"></i> </div>
+        <div class="header-text"><h3>Sistema de Prestamos</h3> </div>
+    </header>
+    <div class="l-navbar" id="nav-bar" style="background-color: #181c4e">
+        <nav class="nav">
+            <div>
+                <a class="nav_logo" asp-area="" asp-controller="Home" asp-action="Index">
+                    <i class='bx bxs-bank nav_logo-icon'></i> <span class="nav_logo-name">Prestamos LDJR</span>
+                 </a>
+                <div class="nav_list">
+                    <a class="nav_link active" asp-area="" asp-controller="Prestamos" asp-action="Index">
+                        <i class='bx bx-duplicate nav_icon'></i><span class="nav_name">Nuevo Prestamo</span>
+                    </a>
+                    <a class="nav_link" asp-area="" asp-controller="Prestamos" asp-action="Registrar">
+                        <i class='bx bx-table nav_icon'></i> <span class="nav_name">Lista de Prestamos</span> 
+                    </a> 
+
+                    <a class="nav_link" asp-area="" asp-controller="Home" asp-action="Informacion">
+                        <i class='bx bx-code-curly nav_icon'></i><span class="nav_name">Información</span> 
+                    </a> 
+                </div>
+            </div>
+            <div>
+                <a href="#" class="nav_link">
+                    <i class='bx bx-user nav_icon'></i><span class="nav_name">@ViewData["NombreUsuario"]</span>
+                </a>
+                <a class="nav_link" asp-area="" asp-controller="Home" asp-action="CerrarSesion">
+                    <i class='bx bx-log-out nav_icon'></i> <span class="nav_name">Cerrar Sesión</span>
+                </a>            
+            </div>
+        </nav>
+    </div>
+    <div class="container">
+        <main role="main" class="">
+            @RenderBody()
+        </main>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="~/js/Index.js" asp-append-version="true"></script>
+    @RenderSection("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,101 @@
+﻿
+@{
+    ViewData["Title"] = "cuota";
+}
+@model PROG_FINAL_prueba_3.Models.Prestamo
+
+@{
+    ViewData["Title"] = "cuota Préstamo";
+}
+
+<h1>Cuota</h1>
+
+<h4>Datos cliente</h4>
+<br>
+<h8>Nombre: <td>@Model.Nombre</td></h8>
+<br>
+<h8>Cuotas pendientes: <td>@Model.cuotaspendientes</td></h8>
+<br>
+<h8>La deuda actual es de: <td> <strong>$@Model.Monto</strong>  </h8>
+<br>
+<h8>Tasa de interes: <td> <strong>$@Model.TasaInteres</strong>  </h8>
+<br>
+<h8>Plaso de tiempo en meses : <td> @Model.Plazo meses </h8>
+<br>
+
+<form id="formulariocuota">
+    <input type="hidden" id="idcuota" name="idcuota" value="@Model.Id" /> <!-- Campo oculto para almacenar el ID del préstamo -->
+    <div class="form-group">
+        <label for="nombrecuota">Nombre:</label>
+        <input type="text" class="form-control" id="nombrecuota" name="nombrecuota" value="@Model.Nombre" />
+    </div>
+    <div class="form-group">
+        <label for="montocuota">Monto:</label>
+        <input type="text" class="form-control" id="montocuota" name="montocuota" value="@Model.Monto" />
+    </div>
+    <div class="form-group">
+        <label for="plazocuota">Plazo:</label>
+        <input type="text" class="form-control" id="plazocuota" name="plazocuota" value="@Model.Plazo" />
+    </div>
+    <div class="form-group">
+        <label for="tasacuota">Pagar Cuotas:</label>
+        <input type="text" class="form-control" id="pagarcuota" name="pagarcuota" value="@Model.pagocuota" />
+    </div>
+    <div class="form-group">
+        <label for="tasacuota">Cuotas pendientes:</label>
+        <input type="text" class="form-control" id="cuotaspendientescuota" name="cuotaspendientescuota" value="@Model.cuotaspendientes" />
+    </div>
+    <div class="form-group">
+        <label for="tasacuota">Tasa de Interés:</label>
+        <input type="text" class="form-control" id="tasacuota" name="tasacuota" value="@Model.TasaInteres" />
+    </div>
+    <BR>
+    <button type="button" class="btn btn-primary mb-4" onclick="guardarcuota()">Guardar</button>
+    <a href="/Prestamos/Registrar" class="btn btn-secondary mb-4">Cancelar</a>
+</form>
+
+
+
+<script>
+    function guardarcuota() {
+        var id = $("#idcuota").val();
+        var nombre = $("#nombrecuota").val();
+        var monto = $("#montocuota").val();
+        var pagar = $("#pagarcuota").val();
+        var plazo = $("#plazocuota").val();
+        var pendiente = $("#cuotaspendientescuota").val();
+        var tasa = parseFloat($("#tasacuota").val().replaceAll(",", "."));
+        $(this).closest("tr").find(".tasaInteres").text(tasa.toString());
+
+  
+       
+      
+        $.ajax({
+            url: "/Prestamos/Registrar", // Ruta de la acción de guardar edición en tu controlador
+            type: "POST",
+            data: { id: id, /*nombre: nombre,*/ monto: monto/*, plazo: plazo, tasa: tasa*/ },
+            success: function (response) {
+               
+                
+                console.log("Edición guardada con éxito.");
+                window.location.href = "/Prestamos/Registrar"; // Redirigir a la página principal de préstamos
+
+                // Borra el registro anterior automáticamente
+                $.ajax({
+                    url: "/Prestamos/Eliminar", // Ruta de la acción de borrar en tu controlador
+                    type: "POST",
+                    data: { id: id }, // Envía el ID del registro editado para borrarlo
+                    success: function (response) {
+                        console.log("Registro borrado con éxito."); // Mensaje de éxito en la consola
+                    },
+                    error: function (error) {
+                        console.log("Error al borrar el registro: " + error); // Manejo de errores, si es necesario
+                    }
+                });
+            },
+            error: function (error) {
+                console.log("Error al guardar la edición: " + error);
+            }
+        });
+    }
+</script>
